@@ -1,0 +1,407 @@
+Lesson 1
+
+  otdelena verstka v template ot logiki - gde dannye - controller
+
+  controller v - index.php; vid - index.tpl.php
+
+  Logika ot predstavleniya otdelena - 
+  Nashe predstavleniye ne znaet nichego o tom kak poluchit' dannye, eto ne ego zadacha, zadacha predstavleniya - vyvesti dannye v browser - index.tpl.php, about.tpl.php; a kak poluchit' dannye ob etom dolzhen znat' controller - index.php, about.php
+  
+Lesson 2 
+
+  - otdelili files header.php, sidebar.php, footer.php
+  - app folder created
+  - views folder created: incs - partials for pages, and template files (index.tpl.php, about.tpl.php)
+  - funcs.php file created 
+  - problem - via URL user can reach all files like funcs.php
+  - solution: in files we constanty delaem (define("MYAPP", true);) i proveryaem esli ona sdelana - to vse norm
+  defined("MYAPP") or die("Forbidden"); - in a files that we want to restrict from user (funcs.php, index.tpl.php, about.tpl.php); but this method was deprecated
+
+Lesson 3 Tochka vkhoda prilozheniya
+
+  - vse zaprosy otpravlyayutsa v edinyi file - frontcontroller, kotoryi primet zapros i esli vsyo correctno to otpravlyaem na nuzhnuyu pages
+  - controllers folder created - index.php, about.php
+  - core folder created - funcs.php
+  - seichas u nas viden listing papok tolko, poetomu sozdaem file index.php na uroven vyshe - vse http zaprosy idut tuda
+  - all http zaprosy idut v public folder (just created) - tochka vkhoda(index.php) + vse public files proekta - styles, fonts, images, js
+  - so we need to make our public folder - document root folder for server
+  - s pomosh'u htaccess file - file APACHE we can change document root to public folder for our website
+  - config file for APACHE server was created - .htaccess
+  - in a root folder our htaccess file(parent file) is prinimaet http zaprosy, a in folder public htaccess file(child file) otpravlyaet nas v public index.php file
+  - now we cant have access to a files, other than in frontcontroller (public index.php)
+
+  - now problem - custom css file(also images, fonts etc) cant have access to tpl files
+  - poetomu we need to correct out htaccess file - any zapros to public folder - if file exists in that folder we allow user to access it, if file doesnt exists in a public folder then we send zapros to oublic index.php file
+  - RewriteCond %{REQUEST_FILENAME} !-f ------ rule added in child htaccess file: if current zapros idet na NE existing file then - use next rule(go to public index.php), if file exists then perenapravleniye ne delaetsya
+  - that way we will make our public files reachable to browser and user
+
+  - defining constants for paths to folders from public index.php
+  - now using this contants we can have access to all our files
+  - also we izbavlyaemsya ot dublirovaniya coda pri different podklyucheniyakh - funcs.php is connected through our public index.php so that makes this file accessible in all files
+  - also we can use those contants in all files to make our paths more clean and controllable
+
+Lesson 4 Simple Router
+ 
+  - router analyzes zapros and perenapravlyaet na sootvetstvuyshii zapros, esli ego net to 404 error
+  - wrote if condition for routing using server request uri method
+  - created errors folder in app/views for handling errors
+  - created function abort() to display errors
+
+  - changed href attr for links in nav so url will look cleaner without .php extension
+
+  - now problem - custom css styles doesnt applies to a double uri - like post/post2
+  - custon css problem solution - base tag in header.php adds to all non absolute links whats inside href attr
+  - dont forget to add slash in the end 
+
+  - what to do with GET parameters? with GET parameters in url page displays errors, because of if condition
+  - we need to sort our url's out to prinimat' GET zaprosy 
+  - solution : use parse_url function; this function turns url into array, where we have different keys = scheme - protokol, host - domen, path - put' (/about), query - GET parameters
+  - that way we will make our page accessible with get parameters
+  - to est' my ne ves' url ispolzuem a tolko path - put' in our url array
+
+  - BUT that way we dont get in our GET array parameters
+  - this is because htaccess file perenapravlyaet vseo 
+  - addind a rule to child htaccess file :
+  - my otpravlyaem na public index.php postupivshii zapros i ****esli budut dopolnitselnaya stroka zaprosa - Query string append - to my yeyuo pristykuem v element $_SERVER['QUERY_STRING'] i vot teper' our GET parameters will be accessible, i sam array GET will recieve our parameters as key-value pairs( dump($_GET) )
+
+Lesson 5 Structure of app / Creating Database
+
+  - Routing if condition optimized - created router.php file in core and config folder in root + routes.php in that folder
+  - in routes.php napisali array so vsemi paths v vide path => file
+  - in router.php prokhodimsya po massivy iz routes.php i sprashivaem if key exists in routes array then requirim conttrollers file accoording to a value of a founded key
+  
+  - razdelili file with PATHS in config folder config.php
+  - razdelili file in Routes.php in router.php
+  - so in our public index.php we are keeping files that all app needs to have access such as funcs.php 
+
+  - created database through php my admin
+
+Lesson 6 Class database 
+
+  - created db.php in config folder with array that we will use in Db Class
+  - created Db class with the help of PDO built-in object
+  - created function in Db class for handling SQL actions also with PDO object
+
+  - changed index.php controller to fetch posts from db
+  - changed view index.tpl.php to correct array keys and posts id - WHY SLUGS?
+  - changed also incs sidebar.php to recent posts limited by 3
+
+Lesson 7 Class Database
+
+  - wrote methods that will return fetch + additional things we can do - flexibility
+  - rewrote Db Class - added private variable $stmt to make this as a object of our Db class not the object of PDOStatement - this way we our object will have access to all methods we write in a Db class 
+  - wrote findAll method in classs Db to fetchAll data through Db class
+  - also added in controller index.php - php doc to make the IDE know that we are using db variable from Db class
+
+  - wrote find method find in Db class that will return single row - post
+  - created post.php controller + php.tpl.php view
+  - in post.php we are fetching single post with the help of find method in our db class 
+  - we need to know id of posts we can take it from GET parameter - array
+  - rewrote sql query to return single row-post that is matching with id in GET array
+  - added route for routing that will send us to post.php
+  - wrote view post.tpl.php and required it in post.php controller
+
+  - now problem - iff we will write non existing id in url we will bump into ugly warning
+  - added if condition after fetching row-post: if post non existing then abort()
+  - to handle this problem more elegant we wrote a method in our Db class findOrFail that will return abort if we-ve fetched single row-post if not then abort()
+  - now we can directly call this method from our post.php controller
+
+  - but this way, when we are directly obrashaemsya k id parameter in sql query (post.php controller) we are vulnerable to sql injection through url - basically we can do anything by url with our Database 
+  - simple way - to check our id variable taht we are getting from GET array - to concretisize that the value of that variablw should be INT 
+  - another way to do it - using parameters of query =>
+
+  - rewrote query method in Db class - added new argument - empty array which we will pass into execute() method 
+  - rewrote query in post.php controller, because now we accepting 2 parameters - query itself and array; so that query can use data from array 
+  - that way our query will recieve data from our array, in which we will pass needed data right into our query method from Db class - in our case id of post
+  - so that way we a re protecting from sql injections
+
+Lesson 8 Class Db
+
+  - now problem - we need to have one single connection to Db we cant have 2 connections because it adding server loadness
+  - we need to restrict creating 2 Db class object from single one
+  - now we will use Singleton pattern when we want class to have only one object 
+  - we should create varibale in class static $instance that will have null default value
+  - now create static function that will check if our variable instance is having value null if yes we will create new self() -> new object of class(we are writing in) and will save it in instance variable
+  - now we need ti rewrite our construct function - will rename it as getConnection method and add return keyword
+  - that way we will get object of class and after we can call from that object getConnection method to construct our object the right way
+  - now in our public index.php we will rewrite our connection to Database with our new methods 
+  - now we can create 2 or more Db class objects but they all be the same object thanks to getInstance method
+  
+Lesson 9 Forms. Data validation
+
+  - created new link in nav for creating posts
+  - added new routes array in config folder and assigned value of a controller that we will create
+  - created conctroller for that path - post-create.php + view for that controller post-create.tpl.php
+  - in view post-create.tpl.php we've created from with method post and added names for inputs that match our Database columns names
+  - using $_SERVER REQUEST_METHOD method we will find out by what type of method we've loaded our page by post or get method: to know if we need to display just page or we need to process data => wrote if condition to know which method was used, basically when we clicking on a link in navbar to get page method is GET when we are clicking on CREATE button method will change to POST
+  - wrote query to insert data from the form (from the $_POST array where we will find all values that were typed by user);
+
+  - now problem - we can send empty form data that will create empty row, column in our Database
+  - one solution - add required to the input, but it's not really safe method because user can change our html in browser and broke the rule
+  - another solution - form validation on server =>
+  - to resctrict user inputs other from in ourr html we will create an array $fillable and write names of our inputs there
+  - we've created function load in funcs.php that prinimaet array and checks if we have keys in argument-array that matched with keys in $_POST-array and if it is then in a new-array those key-value pairs pushed to new-array then returns an that new-array
+  - so we've created that function in order to use it if our variable $fillable-array have keys in $_POST-array => that way we prevent-sortout another data - other from our inputs
+
+  - validation - we've created empty array $errors and will check if its empty in the end
+  - so when the typed data is empty we will add to errors-array inputName-message pairs
+  - and only if our $errors-array empty we will execute our query
+  - added if conditions for not valid messages in our view post-create.tpl.php
+
+Lesson 10 Forms, Processing Data, Safety
+
+  - now problem - when we are submitting form primari values of inputs become empty
+  - so to solve this we will add a code in view post-create.tpl.php which is checking if value exists in a $_POST array and if it is - value pripisyvaetsya to inputs
+  - to optimize code we wrote a function old() in a funcs.php that will check if in $_POST-array exists parameter in arguments of function
+  
+  - now problem - users can type in input any valid html that later will be displayed somehow to prevent this
+  - solution - in-built function htmlspecialchars('') will disable any html tags and display it as usual text - symbols are displayed by htmlentities &lt;
+  - wrote function htmlSpecial that processes an argument with htmlspecialchars() function
+  - added that ^ function to an old() function to disable html right there
+
+  - now problem - with quotes sometime when the typed text have quotes that match the qoutes of a value attr in input - single or double then value can be shortened till first qoute in typed text
+  - solution - add second argument in htmlspecialchars() function ENT_QUOTES will solve this
+
+  - now problem - in post-create.php controller in query function where we inserting data to Database we can have many values and to optimize this we will 
+  - solution - change to named placeholder instead of '?' and as a second argument in query function we will send just single array $data that have trimmed values
+
+  - now problem - after sending POST-data our typed values are staying in inputs
+  - solution - create function redirect() in funcs.php that will accept url and check if it is valid and return a new location with valid url
+  - rewrite post-create.php controller - after query inserting ended to change url location thus also $_SERVER[REQUEST_METHOD] will turn into GET parameter and page will refresh with empty inputs after inserting to a Database
+
+  - now error handling - if we will make a mistake in query function to show error to a user in a proper way
+  - rewrote function query in Db class with try and catch block
+  - also in post-create.php controller where we inserting query in an if statement
+
+Lesson 11 Class Validator
+
+  - problem - in controller post-create.php validation takes a lot of code, and we cant specoffy how many chars we want in a input to insert in Database
+  - in a controller post-create.php we described rules in an array that we want to have regarding our input's values
+  - created new class Validator
+  - in Val class we've created variable empty array $errors + method that will accept data-array and rules-array
+  - in controller post-create.php required Val class file + created object of class and obrashaemsya k methodu validator() in which we will pass 2 params: 1 - data-array that contains filtrated(load function) key-value pairs from $_POST-array, 2 - errors-array that contains rules for every input
+  - created in funcs.php new function for displaying arrays for developing userness
+  - in Val class validate method added code - checking that $data-array has same keys as $rules array - returning strings 'title' 'excerpt' 'content' now
+  - created method check() in a Val class that will accept arrays that will be created by assigning values from validate() method: 1 - fieldname = key in data-array; 2 - value = value from data-array; 3 - rules = array from rules-array that match to th key of data-array => let's call this array passedToCheck
+  - validation methods - are basically methods that will return true or false
+  - created validation method - required() will accept 2 params: 1 - value = value from data-array, that will check if the value is empty, returns true if not empty if empty = false
+  - created min, max validation methods that will check the lenghts of a value in a data-array if it's more or less than the second parameter rule-value = value from passedToCheck rules-array from check() method, using mb_strlen() built-in function
+  - created a rules_list variable in a Val class - array that will contain our rules names so that we could check if the rules in a passedToCheck arrays are existing
+  - in check() method we will firstly check if in the passedToCheck in a 3rd key-array there are values that match our variable rules_list
+  - then we are using call_user_func_array built-in function that accepts 2 params: 1 - some callable function; 2 - some array of values to that callable functions
+  - because we are referring to a classes' functionS in a 1 param we need to write it special way - [$this, $rule] - this notation will refer to a this object and $rule = name of a rule in a rules-array of a passedToCheck arrays that we are passing from validate() method to a check() method, BUT this name will give us access to a functionS names that we are calling - that's why we called function's names same as rules-array keys; second param is an array of values that we are passing to that functions will contain value of input's (reaching them through passedToCheck array) + rule_value that is a value of a key in passedToCheck rule-array
+  - now we need to write method that will collect errors in a Val class variable $errors - empty array
+  - created method addError that will accept 2 params: 1 - fieldname = name of an input basically; 2 - some error; in that method we are assigning to $errors-array variable a key that matches a fieldname and a value for this will be array because we can have more than 1 error
+  - now we need a variable $messages that will contain array with a error's messages that have keys as rules_list + rules-array
+  - now in a check method after we've checked all validation functions if the are true or false, now if they are false then we are using addError method that will add to a variable $errors-array a key - fieldname; a value - str_replaced using $messages-array that will contain inffromation about errors
+  - created 2 new public methods: 1 - getErrors will return a variable errors-array, 2 - hasErrors will check variable errors is empty
+
+  - now validate method will return object: object(Validator)#3 (3) { ["errors":protected]=> array(0) { } ["rules_list":protected]=> array(4) { [0]=> string(8) "required" [1]=> string(3) "min" [2]=> string(3) "max" [3]=> string(5) "email" } ["messages":protected]=> array(4) { ["required"]=> string(33) "The :fieldname: field is required" ["min"]=> string(62) "The :fieldname: field must be a minimum :rulevalue: characters" ["max"]=> string(62) "The :fieldname: field must be a maximum :rulevalue: characters" ["email"]=> string(15) "Not valid email" } }
+
+  - now in a controller post-create.php we are modifying our validation using hasErrors method of a Val class object $validation that are returned from validate() method
+  - if this object hasErrors-array then we will print that array else 'SUCCESS' message
+
+Lesson 12 Namespaces and autoload
+
+  - spl_autoload_register() is built-in function that we can register callback function that will podklyuchat' classes
+  - by that function we can autoload classes
+  - namespaces solves problem of having 2 classes with the same name
+  - more convinient way is a composer + autoload - package manager that will manage our dependencies
+
+  - installed composer.exe 
+  - created composer.json file with rules for autoload
+  - CORE folder moved to vendor folder that was created by composer
+  
+  - now handling path errors
+  - in public index.php frontcontroller we are requiring autoload.php file that is handling autoloads and wad autocreated by composer
+  - changed config.php PATHS constants - specifically CORE path to vendor/myfrm
+  - in public index.php frontcontroller we've deleted required connection to a Db class andd now we are loading it through namespaces and composer
+  - in core/classes folder we are definig namespaces (myfrm just like in a composer.json file) in a classes files
+
+  - now we have problem PDO object is undefined after defining namespaces, because PDO is a built-in class it not in our namespace
+  - to use built-in objects in a namespsace we need to write out '\' before names of these objects OR define it directly - with use keyword 
+
+  - also we need to change Validator class environment to work with composer
+  - changed post-create.php controller to use namespace definition
+
+  - now we dont need to use require to work with classes
+  - from now on we will define namespaces ang write it out in composer.json file if needed to every class we've create
+
+Lesson 13 Validation Errors
+
+  - created method listErrors in Val class to display errors in a proper way, it will accept input-names=data-array-keys=fieldname and check if those fieldnames are existing in errors-array; if they are those errors are displayed in a $output variable with all html needed tags 
+
+  - now we rewrote post-create controller to check if there are no errors in a errors array then make query 
+  - now changed post-create.tpl.php view to display errors messages using listErrors method
+  - now erros wil be displayed according to these error
+
+  - created alert_error + alert_success php files in incs folder of views to display after query to Database
+  - because of in case of successful data inserting in a Database we've wrote in a $_SESSION array success=OK pair and in case of server error error-DBError pair we should let the user know
+  - in those alert files we have html tags + php code that will check if isset pair either for an error or success depending on that displaying values of error or success keys of $_SERVER-array
+  - created function in a funcs.php file of core part to getalerts partial files depending on $_SESSION-array if it has values success or error
+  - now we will use that function in a header.php just call it in a header
+  - to let SESSION-array to work we need to start session in public index.php frontcontroller
+
+Lesson 14 Class Router
+
+  - why we need router class - firstly to distinguish what type of zapros were made(post,get,put,delete) to display a page regarding a method that was used
+  - created class Router in classes core
+  - created 3 variables $routes - empty array, $uri for keeping string url, $method string
+  - created construct method to assign values to uri variable = current uri + method = method using $_SERVER-array
+  - created method add in a Router class to optimize code, this method accepts 3 params: 1 - current $uri, 2 - controller(php file to handle data), 3 - method (method which was used)
+  - in that method we will define our routes-array with accepted data: key(string with the name of param)-value(accepted matching value)
+
+  - now we will create special methods of Router class that will handle different methods
+  - get() public special method of Router class will accept only $uri and $controller
+  - in that function we will call add() method and now in every special method there will be own parameter $method that we will be writing directly in a special method
+  - created 2 same methods for another htttp methods
+
+  - now in a routes.php file we are calling those special methods to create resources to work with posts, those names for a uri and for files that controls those uri are named after REST rules
+  - now we have 3 same uri but the all handled by a different methods
+  - in frontcontroller we are creating Router object
+
+  - now we need to create method in a Router class that will search for matches in a current $uri and in a routes-inner-array uri (remember > routes-array is an array that consists from arrays with infos from special methods that we are calling in a routes.php)
+  - now if we have a math both in a stroka zaprosa and in a method we will connect correct controller
+
+  - now our Router can check not only uri that was get, but also can check which method was used
+
+  - now we sholuld create controller for new router handling posts
+  - now problem - undefined Db class in index.php controller because of different oblastey vidimosti, in a function there are local oblast vididmosti - quick solution for this problem is to define $db variable as global in index.php controller
+
+  - now we need to ispravit' paths to match them like in config routes.php recommended
+
+  - from post-create.php(renamed to create.php): POST zapros-inserting data to Database we are moving it to store.php controller because it by POST method(we are handling that situation through Router) + there is no need in if-condition. And create.php file is handled by get method we only showing a form
+
+  - now problem form validation code not working because of form in create.tpl.php view is not having an action attr value - in our routes saved that post method to store.php is going from '/posts' - uri so we need to specify it in action attr of form tag
+
+Lesson 15 Class Router
+
+  - now we need to handle delete method
+  - created destroy.php controller file
+  - now problem - how we can handle delete method through browser?
+  - to handle this situation we need to create form with 2  hidden inputs: 1 - with name='_method' and value=*needed method* 'delete', 2 - with name=*needed post-array key from db query method* 'id' and value=*getting value of neede post-array key* '$post['id']'
+
+  - now we can check in a Router class not only get and post methods by using $_SERVER['REQUEST_METHOD'] but also another methods using $_POST['_method'] in which we are passing value from first input 
+  
+  - now we need to get data from $_POST array in our controller destroy.php and write a code for deleting row in a Database
+  - created new method in Db class to count affected rows in Database table using PDO object
+  - now we are checking if this method is returning smth true then we will save in a variable + in a session result messages depending on a db rowCount method
+  - also depending on from what source the zapros arrived from api-array or from $_post-array we will decide to send result message in json for api + redirect to main page 
+
+Lesson 16 Service(Class) Container
+
+  - to prevent requests to global variable - like $db
+  - Service Container - store for objects of classes, so that in any folder or file of our app we can have object of a class without global keyword
+  - we need to create 2 classes: 1 - ServiceContainer 2 - App to reach classes easily
+  - in a ServiceContainer we are creating 2 public methods - setter and getter
+  - setter method in a ServiceContainer will set in a services array key(passed 1 argument - name of service)-value(function - 2 passed argument), so we will have an array in which will be stored functions which we can reach by their key
+  - getter method will call the function by their key(passed argument) using call_user_func which are calling a callbback function that was passed as an argument
+
+  - in a public older we've created boostrap.php file that will work with ServiceContainer: will place some dependencies in ServiceContainer
+  - in that boostrap file we've place a db object connection from frontcontroller using setService function
+  - that's way we will get in services array of an object of ServiceContainer class a method that will can call anywhere in the programm by passed key
+
+  - to make things easer we've created App class that is static we are passing result of a setService method 
+  - now we have a container that we can call through getContainer and return an $services array through we can call a method in by passed key
+  - so the App class works as a obertka to ServiceContainer services-array 
+  - in ServiceContainer we can have any class and we can have access to classe's objects
+  - to optimize things we've created in App class a method to call both 2 needed methods 1 from App itself and second one from ServiceContainer and passed argument for that method will call needed function
+  - and in funcs.php we are creating a helper function that will call App's method to connect to Database
+
+  - now in any place of an App we can have access to a Db class and his methods through helper function or by App class
+
+Lesson 17 Middleware and protecting routes
+
+  - middleware is located between router and controller that handles zapros
+  - at this time our router is getting zapros then finding a match + matching controller and passing that zapros by calling a controller
+  - middleware is a pice of code that controlls access to pages(controllers+views) by checking smth 
+
+  - first way is using $_SESSION-array and checking if smth isset in that array
+
+  - second way is to create in Router class new function that will handle access of users
+  - created method in a Router class only() that will accept as a parameter uslovnuyuy rol' (auth, guest)
+
+  - in add mrthod from Router class we are adding new array's key - 'middleware' null by now
+  - when we are calling only function we are recieving 1 param - string with a role of a user and that string we need to define to routes-array's array, we can do this using array_key_last built-in function and assign accepted value in only() method
+
+  - now in a match method that checks mathes and connect to a controller, we need to write some if-conditions to check the middleware key if it exist and redirect depending on that
+
+  - created 3 controller and view files for login, logout and register
+  - added links to a header depending on SESSION-array
+  - now only logged in user can have access to a new post page
+
+  - to optimize our code we've created middleware classes - Auth and Guest 
+  - in both classes we have method handle that we can call in a match method of a Router class
+  - in routes.php file we are creating 'map' of middlewares so that we can easily reach them
+  - rewrote match method from Router class using Middleware-map constant and + checking if is not it then throw error, else calling handle method of a class' new object with a name (guest or auth in our case) that we've get from routes-array's array
+
+Lesson 18 Pagination
+
+  - in index.php controller we've created 3 new variables $per_page, $total, $pages_cnt, $page to create pagination. per_page is an amount of rows in Database to show; total is total count of rows in Database table (using fetchColumn built-in function); $pages_cnt is a division with okrugleniem vverkh of total rows na per_page variable - this will count how many pages we will have; $page is a value in GET-array that will allow us to use links in pagination and control invalid url
+  - also we will have start variavble that will count from what row-index in Database table we've starting sql-query 
+  - last thing to do is to correct main sql query to display limited rows of Database-table 
+
+Lesson 19 Pagination with Cursor and Offset
+
+  - we've learnt about differences between cursor and Offset pagination. Main difference is that in offset pagination we are using sql query as an offset (limit 10,10) and in cursor pagination we are using sql-query with id's (where id = 10)
+
+Lesson 20 Pagination Class
+
+  - now problem - when we are using another Getparametr but page it will not work
+  - created class Pagination with variables to control pagination
+  - in index.php controller we are assigning to a variable $page value from GET-array or 1 by default if it is not set
+  - and we can copy $per_page and $total variable from last pagination version
+  - now we are creating new object from Pagination class and passing as params defined variables
+
+  - in Pagination class we've created getCountPages method that will return division - same as previous pages_cnt variable
+  - also we've created getCurrentPage that will check GET-array's value to be valid and return checked value
+  - also cerated getStart method to calculate start position for a sql-query
+
+  - now we've created getParams method that will return current uri and now we are available to use not only 1 param in URL = GET-array
+
+Lesson 21 Pagination Class 
+
+  - in Pagination class we've created new method - getHtml that will return string HTML for every HTML link in pagination depending on current page + making checks for multiple if-conditions
+  - also created getLinks method that will return a string depending on a passed value and we will use it to fill out links in HTML strings + method will check for valid uri
+  - also created getMiDSize method that will return either all count-pages value or current mid-size value depending on if all-pages variable(value starting from we want to show in all links to pages or show midsized links) is more than all count-pages variable
+  - created magic method toString to automize calling this method because this method is what we've created whole Pagination class
+
+  - now in a index.tpl.php view we are calling that classes' object to display HTML
+
+Lesson 22 Register page
+
+  - created controller file store.php that will handle post zapros from a form (created in a register.tpl.php) + added in a routes new route using post method that will redirect us to store.php file
+  - that file will validate recieved data using Validator classes' object and insert values into our users Database table
+
+  - in Validator class we need to add 1 more rule for unique values, also create unique method validator to check if in our Database there is already value that was passed in a form from register.tpl.php view
+
+Lesson 23 Authorize page
+
+  - updated login.php controller
+  - created login.tpl.php file form
+  - added in routes file new route for login page to redirect to it in case if anauthorized user want access to a page only for authorized
+  - created logged.php controller to handle post zapros from login.php form 
+  - using Validator class object we've validated form's data
+
+Lesson 24 Download and Validation of Images
+
+  - we've updated funcs.php file load function to accept params either from POST or GET arrays in order to accept not only strings but arrays
+  - in store.php file we are checking $_FILES array that will check if files were downloaded at all
+  - in Validator class we are creating new rule for file extensions and creating new method to check for allowed extensions of uploaded file
+  - also added rule and method for file size in Validator class
+
+Lesson 25 Download and Validation of images
+
+  - in store.php users post controller we've changed query to insert data-array directly
+  - in Db class adde new method to get id of last inserted row in a DB
+  - altered validation in store.php user post controller to check for uploaded file-extension and to get id of last inserted row in a Database table using method of a Db class
+  - added in header.php avatar photo to display it in browser
+
+Lesson 26 Router CHPU links(slug)
+
+  - in public index.php frontcontroller we are creating RegExp pattern to demo check our urls
+  - in routes.php filw we've changed 1 url argument in a route that responsible for showing posts
+  - now we need to change Router class match method to work with RegExp
+
+
+

@@ -1,0 +1,181 @@
+@font-face {
+  font-family: "GoodVibes";
+  src: url("../fonts/GoodVibesPro.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "AcariSans";
+  src: url("../fonts/AcariSans.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Evolventa";
+  src: url("../fonts/Evolventa-Regular.woff2") format("woff2");
+}
+
+h1,
+h2 {
+  font-family: "GoodVibes";
+  text-align: center;
+  color: #7e323c;
+}
+
+p {
+  font-family: "AcariSans";
+  text-align: center;
+  font-size: 40px;
+  margin: 20px 0;
+}
+
+.preview h1,
+.preview h2 {
+  font-size: 90px;
+}
+
+.preview,
+.info {
+  height: 1748px;
+  width: 1240px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.info {
+  padding: 70px;
+}
+
+.info h2 {
+  font-size: 70px;
+}
+
+.image_wr {
+  height: 70%;
+  width: 70%;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.couple_img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.wed-names {
+  margin-top: 10px;
+  width: 70%;
+  display: grid;
+  flex-direction: column;
+}
+
+.groom_name {
+  justify-self: flex-start;
+}
+
+.bride_name {
+  justify-self: flex-end;
+}
+
+#img1,
+#img2,
+#img3,
+#img4,
+#img5,
+#img6,
+#img7,
+#img8,
+#img9 {
+  position: absolute;
+}
+
+#img3 {
+  width: 800px;
+  z-index: -1;
+  right: -15rem;
+  bottom: -10rem;
+  opacity: 0.5;
+}
+
+#img4 {
+  width: 380px;
+  z-index: 1;
+  right: -4rem;
+  top: -8rem;
+}
+
+#img5 {
+  width: 400px;
+  z-index: 1;
+  left: -8rem;
+  top: -6rem;
+}
+
+#img6 {
+  width: 301px;
+  z-index: 1;
+  right: -6rem;
+  bottom: -4rem;
+}
+
+#img7 {
+  width: 280px;
+  z-index: 1;
+  left: 6rem;
+  bottom: -5rem;
+}
+
+#img8 {
+  width: 320px;
+  z-index: 1;
+  right: -7rem;
+  top: 3rem;
+}
+
+#img9 {
+  width: 320px;
+  z-index: 1;
+  left: 5rem;
+  top: -8rem;
+}
+
+#img1 {
+  width: 650px;
+  z-index: 1;
+  left: -10rem;
+  top: -6rem;
+  opacity: 0.5;
+}
+
+#img2 {
+  width: 500px;
+  z-index: 1;
+  left: -14rem;
+  bottom: -6rem;
+}
+
+.qr_info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 30px;
+}
+
+.qr_info p {
+  font-size: 28px;
+  text-align: justify;
+}
+
+.qr_image {
+  width: 150px;
+  height: 150px;
+}
+
+.ending {
+  margin-top: auto;
+}

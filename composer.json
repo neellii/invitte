@@ -1,0 +1,12 @@
+{
+  "autoload": {
+    "psr-4": {
+      "myfrm\\": "vendor/myfrm/core/classes"
+    }
+  },
+  "require": {
+    "ext-pdo": "*",
+    "endroid/qr-code": "^5.0",
+    "yoomoney/yookassa-sdk-php": "^3.3"
+  }
+}

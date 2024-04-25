@@ -1,0 +1,196 @@
+// ============ main =============
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+SC&display=swap");
+
+@font-face {
+  font-family: "Alana";
+  src: url("../fonts/AlanaPro.otf") format("woff2");
+}
+
+$accent-font: "Alana";
+$main-font: "Cormorant SC";
+$detailsColor: #676768;
+
+main {
+  width: 100%;
+  overflow: hidden;
+  font-family: $main-font;
+  background-color: #f1eadbe0;
+  position: relative;
+  z-index: 0;
+}
+
+.wrapper {
+  width: 80%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+section {
+  margin: 20px 0;
+}
+
+h1 {
+  font-family: "Alana";
+  font-size: 38px;
+  color: #b69e83;
+  line-height: 50px;
+}
+
+h2,
+h3 {
+  font-family: "Alana";
+  font-size: 35px;
+  line-height: 50px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #b69e83;
+}
+
+p,
+a {
+  font-family: "Cormorant SC";
+  font-size: 20px;
+  margin: 15px 0;
+  text-align: center;
+  color: #000;
+}
+
+@import "general";
+
+.preview {
+  height: 100svh;
+  position: relative;
+  opacity: 0;
+
+  .inner {
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #e7d4ba4d;
+    position: relative;
+
+    .topw {
+      position: absolute;
+      height: 4.5px;
+      width: 36%;
+      background: linear-gradient(
+        219deg,
+        rgba(245, 223, 193, 1) 0%,
+        rgba(255, 242, 227, 1) 25%,
+        rgba(231, 212, 186, 1) 100%
+      );
+      top: 0;
+      left: 0;
+    }
+
+    .toph {
+      position: absolute;
+      height: 34%;
+      width: 4.5px;
+      background: linear-gradient(
+        41deg,
+        rgba(245, 223, 193, 1) 0%,
+        rgba(255, 242, 227, 1) 32%,
+        rgba(231, 212, 186, 1) 100%
+      );
+      top: 0;
+      left: 0;
+    }
+
+    .bottomh {
+      position: absolute;
+      height: 34%;
+      width: 4.5px;
+      background: linear-gradient(
+        100deg,
+        rgba(245, 223, 193, 1) 0%,
+        rgba(255, 242, 227, 1) 20%,
+        rgba(231, 212, 186, 1) 100%
+      );
+      bottom: 0;
+      right: 0;
+    }
+
+    .bottomw {
+      position: absolute;
+      width: 36%;
+      height: 4.5px;
+      background: linear-gradient(
+        90deg,
+        rgba(245, 223, 193, 1) 0%,
+        rgba(255, 242, 227, 1) 33%,
+        rgba(231, 212, 186, 1) 100%
+      );
+      bottom: 0;
+      right: 0;
+    }
+  }
+
+  .couple_img {
+    max-width: 90%;
+    max-height: 60%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 3px;
+  }
+
+  .wed-names {
+    text-align: center;
+    display: grid;
+    flex-direction: column;
+    width: 100%;
+    z-index: 10;
+
+    .groom_name {
+      justify-self: flex-start;
+    }
+
+    .bride_name {
+      justify-self: flex-end;
+    }
+  }
+}
+
+// =========== Info =============
+.info {
+  opacity: 0;
+}
+
+.note-line {
+  height: 1px;
+  width: 150px;
+  background-color: $detailsColor;
+  margin: 30px auto 0 auto;
+  opacity: 1;
+}
+
+.end-line {
+  height: 3px;
+  width: 60%;
+  background: linear-gradient(
+    90deg,
+    rgba(245, 223, 193, 1) 0%,
+    rgba(235, 228, 220, 1) 50%,
+    rgba(231, 212, 186, 1) 100%
+  );
+  margin: 30px auto;
+  opacity: 1;
+}
+
+@media screen and (min-width: 700px) {
+  .wrapper {
+    overflow: hidden;
+    padding: 0 20px;
+  }
+
+  main {
+    background-color: rgb(255, 248, 253);
+    position: relative;
+    z-index: 0;
+  }
+}

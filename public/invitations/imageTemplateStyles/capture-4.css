@@ -1,0 +1,124 @@
+@font-face {
+  font-family: "Gloria";
+  src: url("../fonts/Gloriascript.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Evolventa";
+  src: url("../fonts/Evolventa-Regular.woff2") format("woff2");
+}
+
+h1,
+h2 {
+  font-family: "Gloria";
+  text-align: center;
+  color: #4e3885;
+}
+
+p {
+  font-family: "Evolventa";
+  text-align: center;
+  font-size: 37px;
+  margin: 20px 0;
+}
+
+.preview h1,
+.preview h2 {
+  font-size: 120px;
+  line-height: 90px;
+}
+
+.preview,
+.info {
+  height: 1748px;
+  width: 1240px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: url("../img/template-4/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.info {
+  padding: 70px;
+}
+
+.info h2 {
+  font-size: 85px;
+  color: #2f244a;
+}
+
+.image_wr {
+  height: 70%;
+  width: 70%;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.couple_img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.wed-names {
+  margin-top: 10px;
+  width: 70%;
+  display: grid;
+  flex-direction: column;
+}
+
+.groom_name {
+  justify-self: flex-start;
+}
+
+.bride_name {
+  justify-self: flex-end;
+}
+
+#img1,
+#img2 {
+  position: absolute;
+}
+
+#img1 {
+  width: 650px;
+  z-index: -1;
+  right: -10rem;
+  bottom: -8rem;
+}
+
+#img2 {
+  width: 500px;
+  z-index: -1;
+  left: -12rem;
+  bottom: -6rem;
+}
+
+.qr_info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 30px;
+}
+
+.qr_info p {
+  font-size: 28px;
+  text-align: justify;
+}
+
+.qr_image {
+  width: 150px;
+  height: 150px;
+}
+
+.ending {
+  margin-top: auto;
+}

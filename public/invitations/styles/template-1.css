@@ -1,0 +1,418 @@
+@font-face {
+  font-family: "Dance Partner";
+  src: url("../fonts/template-1/dance-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Evolventa";
+  src: url("../fonts/template-1/Evolventa-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+main {
+  width: 100%;
+  overflow: hidden;
+  font-family: "Evolventa";
+}
+
+.wrapper {
+  width: 80%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+section {
+  margin: 20px 0;
+}
+
+h1 {
+  font-family: "Dance Partner";
+  font-size: 50px;
+}
+
+h2,
+h3 {
+  font-family: "Dance Partner";
+  font-size: 30px;
+  line-height: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+p,
+a {
+  font-family: "Evolventa";
+  font-size: 16px;
+  margin: 15px 0;
+  text-align: center;
+}
+
+.programm {
+  margin-top: 40px;
+}
+.programm_title {
+  margin-bottom: 20px;
+}
+
+.timeline-container {
+  position: relative;
+}
+
+.timeline-part {
+  position: relative;
+  min-height: 150px;
+}
+
+.timeline-line {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  width: 1px;
+  top: 0px;
+  bottom: 0px;
+  display: none;
+  background-color: #000;
+}
+.timeline-line::before, .timeline-line::after {
+  position: absolute;
+  display: block;
+  content: " ";
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background-color: #000;
+}
+.timeline-line::after {
+  bottom: 0px;
+}
+
+.line-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  z-index: 1;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 100px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  color: black;
+}
+
+.line-section:nth-child(odd) {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.timeline-content {
+  font-family: "Evolventa";
+  font-size: 1rem;
+  width: 50%;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.timeline-icon {
+  display: block;
+  max-width: 150px;
+  max-height: 150px;
+  width: auto;
+  height: auto;
+}
+
+.timeline-number {
+  font-size: 1.2rem;
+}
+
+.dresscode {
+  margin-top: 80px;
+  position: relative;
+}
+.dresscode_colors {
+  height: 20px;
+  width: 100%;
+}
+
+.hashtag {
+  margin-top: 80px;
+  position: relative;
+}
+.hashtag_span {
+  font-family: "Dance Partner";
+  font-size: 35px;
+  display: block;
+  color: #000;
+}
+
+.form {
+  margin-top: 80px;
+  position: relative;
+  z-index: 10;
+}
+.form label {
+  display: block;
+  font-family: "Evolventa";
+  margin-top: 15px;
+}
+.form input {
+  font-family: "Evolventa";
+  width: 100%;
+  padding: 5px 0 5px 10px;
+  border: 1px solid #000;
+}
+.form button {
+  padding: 5px 20px;
+  border: 1px solid #000;
+  font-family: "Evolventa";
+  margin-top: 20px;
+}
+
+.timer {
+  margin-top: 80px;
+  position: relative;
+}
+.timer .count-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 5px 30px;
+  margin-bottom: 25px;
+  color: black;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 700px;
+}
+.timer .big-text {
+  font-size: 1.5rem;
+  width: initial;
+}
+.timer .count-el span {
+  font-size: 1rem;
+  font-family: "Evolventa";
+}
+
+.contacts a {
+  display: block;
+  padding: 5px;
+  border: 1px solid #000;
+  color: black;
+}
+
+.ps {
+  margin-top: 80px;
+  position: relative;
+  margin-bottom: 100px;
+}
+
+.info {
+  width: 100%;
+  position: relative;
+}
+
+.preview {
+  height: 100svh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  opacity: 0;
+}
+.preview .couple_img {
+  max-width: 90%;
+  max-height: 60%;
+  width: auto;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 3px;
+}
+.preview .wed-names {
+  margin-top: 20px;
+  text-align: center;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  z-index: 10;
+}
+.preview .wed-names .groom_name {
+  justify-self: flex-start;
+}
+.preview .wed-names .bride_name {
+  justify-self: flex-end;
+}
+.preview__leaf-1 {
+  position: absolute;
+  width: 200px;
+  z-index: -1;
+  right: -6rem;
+  bottom: -5rem;
+  rotate: -5deg;
+  opacity: 0;
+  -webkit-filter: saturate(1.5);
+          filter: saturate(1.5);
+}
+.preview__leaf-2 {
+  position: absolute;
+  width: 250px;
+  z-index: -1;
+  left: -7rem;
+  bottom: -7rem;
+  rotate: 45deg;
+  opacity: 0;
+  -webkit-filter: saturate(1.5);
+          filter: saturate(1.5);
+}
+.preview__leaf-3 {
+  position: absolute;
+  width: 110px;
+  z-index: 1;
+  left: -4rem;
+  top: -3rem;
+  rotate: 35deg;
+  opacity: 0;
+}
+.preview__leaf-4 {
+  position: absolute;
+  width: 100px;
+  z-index: 1;
+  right: -4rem;
+  bottom: 8rem;
+  rotate: -35deg;
+  opacity: 0;
+}
+
+.line {
+  height: 1px;
+  width: 150px;
+  background-color: black;
+  margin: 30px auto;
+  opacity: 0;
+}
+
+.info {
+  opacity: 0;
+}
+
+.leaf01 {
+  position: absolute;
+  width: 120px;
+  bottom: -4rem;
+  left: -5rem;
+  rotate: 15deg;
+  z-index: -1;
+}
+
+.timeline_leaf-1 {
+  position: absolute;
+  width: 200px;
+  right: -5rem;
+  top: 2rem;
+}
+
+.leaf02 {
+  position: absolute;
+  width: 200px;
+  z-index: -1;
+  right: -7rem;
+  bottom: -8rem;
+  rotate: -15deg;
+}
+
+.leaf03 {
+  position: absolute;
+  width: 200px;
+  left: -9rem;
+  z-index: -1;
+  bottom: -4rem;
+  rotate: 20deg;
+}
+
+.leaf07 {
+  position: absolute;
+  width: 250px;
+  right: -8rem;
+  bottom: -7rem;
+  z-index: -1;
+}
+
+.timer .leaf04 {
+  position: absolute;
+  width: 150px;
+  rotate: 82deg;
+  right: -5rem;
+  top: 4rem;
+  -webkit-transform: scale(-1);
+          transform: scale(-1);
+  z-index: -1;
+}
+
+.leaf05 {
+  position: absolute;
+  width: 150px;
+  right: -4rem;
+  top: 0;
+  opacity: 0;
+  z-index: -1;
+}
+
+.leaf06 {
+  position: absolute;
+  width: 180px;
+  top: 4rem;
+  left: -2rem;
+  rotate: 25deg;
+  opacity: 0;
+  z-index: -1;
+}
+
+@media screen and (min-width: 700px) {
+  .wrapper {
+    background-color: white;
+    overflow: hidden;
+    z-index: -2;
+    padding: 0 20px;
+  }
+  .wrapper img {
+    z-index: auto;
+  }
+  main {
+    background-color: #fbfff7;
+  }
+}

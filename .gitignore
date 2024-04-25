@@ -1,0 +1,13 @@
+vendor/bacon/
+vendor/bin/
+vendor/endroid/
+vendor/php-ds/
+vendor/psr/
+vendor/yoomoney/
+vendor/dasprid/
+vendor/composer/
+errors.log
+public/invitations/icons_set1/
+config/db.php
+config/yoo.php
+public/invitations/styles/prepros.config

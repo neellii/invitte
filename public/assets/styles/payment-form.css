@@ -1,0 +1,47 @@
+.row {
+  padding-top: 60px;
+  text-align: center;
+}
+
+.temp-img {
+  width: 250px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.row p {
+  margin-top: 10px;
+}
+
+form {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+form button {
+  color: #000;
+  border: 1px solid #242424;
+  padding: 15px 20px;
+  cursor: pointer;
+  letter-spacing: 1.1px;
+  font-size: 14px;
+}
+
+.logo-yoo {
+  width: 110px;
+  opacity: 0.3;
+  margin: 0 auto;
+}
+
+.price-div {
+  display: flex;
+  width: 250px;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 0 auto;
+}
+
+.price {
+  font-weight: bold;
+}

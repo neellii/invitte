@@ -1,0 +1,497 @@
+.main {
+  overflow: hidden;
+  position: relative;
+}
+
+h2 {
+  font-size: 35px;
+}
+
+.landing {
+  height: 100svh;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 30px;
+
+  .landing-h2 {
+    font-size: 35px;
+    margin-bottom: 40px;
+    line-height: 1.4;
+    color: #242424;
+    opacity: 1;
+
+    span {
+      margin-bottom: 20px;
+    }
+  }
+
+  a {
+    color: #000;
+    border: 1px solid #242424;
+    padding: 15px 20px;
+    cursor: pointer;
+    transform: scale(1, 1);
+    letter-spacing: 1.1px;
+  }
+}
+
+.cookie-alert {
+  position: fixed;
+  bottom: 0;
+  padding: 10px 30px;
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+
+  button {
+    color: #000;
+    border: 1px solid #242424;
+    padding: 5px 12.5px;
+    cursor: pointer;
+    letter-spacing: 1.1px;
+    display: block;
+    float: right;
+  }
+}
+
+.intro {
+  width: 90vw;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+  align-items: center;
+
+  .step {
+    padding: 30px 80px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    h3 {
+      font-size: 50px;
+      opacity: 0.8;
+      text-align: center;
+    }
+
+    img {
+      display: block;
+      width: 60px;
+    }
+  }
+}
+
+.showcase {
+  position: relative;
+  .cardwr {
+    height: 100svh;
+    padding-top: 80px;
+
+    .card {
+      margin: 0 auto;
+      background-image: url("../img/upward9.jpeg");
+      background-size: contain;
+      height: 437px;
+      width: 310px;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
+    .phonec {
+      padding-top: 100px;
+      width: 350px;
+      z-index: 10;
+      position: absolute;
+      bottom: -20rem;
+      right: 0;
+      left: 0;
+      margin: 0 auto;
+      opacity: 0;
+    }
+
+    .phonev {
+      width: 380px;
+      z-index: 10;
+      position: absolute;
+      bottom: -7.8rem;
+      right: -4px;
+      left: 0;
+      margin: 0 auto;
+      opacity: 0;
+    }
+  }
+}
+
+.advantages {
+  margin-top: 200px;
+  padding-top: 70px;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+
+  .adv {
+    width: 65%;
+    margin: 0 auto;
+    opacity: 0;
+
+    h3 {
+      font-size: 30px;
+      color: #4d5974;
+    }
+
+    .content1 {
+      padding: 20px 0 40px 0;
+    }
+  }
+
+  .adv:nth-child(even) {
+    text-align: left;
+  }
+}
+
+.templates {
+  width: 90%;
+  margin: 0 auto;
+  z-index: 30;
+
+  .temp-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+
+    .card-body {
+      max-width: 450px;
+      background-image: linear-gradient(
+        to top,
+        #f8f2f4 0%,
+        #e3eeff 40%,
+        #e3eeff 100%
+      );
+      padding: 10px;
+    }
+
+    .card-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 10px 0;
+
+      a {
+        border: 1px solid #242424;
+        padding: 5px 12.5px;
+      }
+
+      .btns {
+        display: flex;
+        column-gap: 10px;
+      }
+
+      .heart-svg {
+        cursor: pointer;
+
+        path {
+          fill: #000;
+        }
+      }
+    }
+
+    .card-buy {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      p {
+        font-size: 18px;
+      }
+
+      .buy-btn {
+        color: #000;
+        border: 1px solid #242424;
+        padding: 5px 12.5px;
+        cursor: pointer;
+        letter-spacing: 1.1px;
+        display: inline-block;
+        margin-right: auto;
+      }
+    }
+
+    .card-text {
+      padding-top: 10px;
+    }
+  }
+}
+
+.faq {
+  $bg: #fff;
+  $text: #7288a2;
+  $gray: #4d5974;
+  $lightgray: #e5e5e5;
+  $blue: #5d9eff;
+
+  margin-top: 60px;
+
+  .container {
+    margin: 0 auto;
+    padding: 4rem;
+    width: 48rem;
+  }
+
+  .accordion {
+    .accordion-item {
+      border-bottom: 1px solid $lightgray;
+      button[aria-expanded="true"] {
+        border-bottom: 1px solid $blue;
+      }
+    }
+    button {
+      position: relative;
+      display: block;
+      text-align: left;
+      width: 100%;
+      padding: 1em 0;
+      color: $text;
+      font-size: 1.15rem;
+      font-weight: 400;
+      border: none;
+      background: none;
+      outline: none;
+      &:hover,
+      &:focus {
+        cursor: pointer;
+        color: $blue;
+        &::after {
+          cursor: pointer;
+          color: $blue;
+          border: 1px solid $blue;
+        }
+      }
+      .accordion-title {
+        padding: 1em 1.5em 1em 0;
+      }
+      .icon {
+        display: inline-block;
+        position: absolute;
+        top: 18px;
+        right: 0;
+        width: 22px;
+        height: 22px;
+        &::before {
+          display: block;
+          position: absolute;
+          content: "";
+          top: 9px;
+          left: 5px;
+          width: 18px;
+          height: 1px;
+          background: currentColor;
+          transition: width 0.4s ease-in-out;
+        }
+      }
+    }
+    button[aria-expanded="true"] {
+      color: $blue;
+      .icon {
+        &::before {
+          width: 0;
+        }
+      }
+      + .accordion-content {
+        opacity: 1;
+        max-height: 20em;
+        transition: all 200ms linear;
+        will-change: opacity, max-height;
+      }
+    }
+    .accordion-content {
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 200ms linear, max-height 200ms linear;
+      will-change: opacity, max-height;
+      p {
+        font-size: 1rem;
+        font-weight: 300;
+        margin: 1em 0;
+      }
+    }
+  }
+}
+
+.red-svg {
+  fill: #c12324 !important;
+}
+
+@media screen and (max-width: 1000px) {
+  .phone-v {
+    width: 300px;
+  }
+
+  .landing .landing-h2 {
+    font-size: 25px;
+  }
+
+  .faq h2 {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .faq .container {
+    width: 40rem;
+    padding: 5px;
+
+    .accordion button {
+      padding: 5px;
+    }
+  }
+
+  .faq .accordion button .accordion-title {
+    padding: 0;
+    font-size: 14px;
+  }
+
+  .faq .accordion .accordion-content p {
+    font-size: 13px;
+    padding: 10px 0;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .landing a {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .phone-v {
+    width: 250px;
+    align-self: flex-start;
+  }
+
+  .landing {
+    padding: 0;
+  }
+
+  .cookie-alert {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .faq .container {
+    width: 22rem;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .phone-v {
+    width: 200px;
+  }
+
+  .intro .step img {
+    width: 50px;
+  }
+
+  .intro .step h3 {
+    font-size: 30px;
+  }
+
+  .content h4 {
+    font-size: 14px;
+  }
+
+  .faq .container {
+    width: 19rem;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .landing .landing-h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .landing {
+    flex-direction: column;
+    row-gap: 30px;
+    align-items: center;
+    // height: max-content;
+  }
+
+  .landing a {
+    font-size: 14px;
+  }
+
+  .phone-v {
+    width: 230px;
+  }
+
+  .intro .step {
+    padding: 15px 20px;
+    align-items: center;
+  }
+
+  .advantages .adv {
+    width: 85%;
+  }
+
+  .advantages .adv h3 {
+    font-size: 20px;
+  }
+
+  .advantages .adv h4 {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .showcase .cardwr .phonev {
+    bottom: -6.5rem;
+  }
+
+  .temp-wrapper .card-body .card-buy p {
+    font-size: 14px;
+  }
+
+  .temp-wrapper .card-body .card-buy button {
+    font-size: 14px;
+  }
+
+  .temp-wrapper .card-body .card-title a {
+    font-size: 14px;
+  }
+
+  .templates {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .showcase .cardwr .phonev {
+    bottom: -5.5rem;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .showcase .cardwr .phonev {
+    bottom: -4.5rem;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .showcase .cardwr .phonev {
+    bottom: -4.3rem;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .showcase .cardwr .phonec {
+    left: 5px;
+  }
+}

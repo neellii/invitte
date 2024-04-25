@@ -1,0 +1,242 @@
+// ============ main =============
+@font-face {
+  font-family: "Dance Partner";
+  src: url("../fonts/template-1/dance-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Evolventa";
+  src: url("../fonts/template-1/Evolventa-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+
+$accent-font: "Dance Partner";
+$main-font: "Evolventa";
+$detailsColor: #000;
+
+main {
+  width: 100%;
+  overflow: hidden;
+  font-family: $main-font;
+}
+
+.wrapper {
+  width: 80%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+section {
+  margin: 20px 0;
+}
+
+h1 {
+  font-family: "Dance Partner";
+  font-size: 50px;
+}
+
+h2,
+h3 {
+  font-family: "Dance Partner";
+  font-size: 30px;
+  line-height: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+p,
+a {
+  font-family: "Evolventa";
+  font-size: 16px;
+  margin: 15px 0;
+  text-align: center;
+}
+
+@import "general";
+
+// ============== preview =============
+.preview {
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  opacity: 0;
+
+  .couple_img {
+    max-width: 90%;
+    max-height: 60%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 3px;
+  }
+
+  .wed-names {
+    margin-top: 20px;
+    text-align: center;
+    display: grid;
+    flex-direction: column;
+    width: 100%;
+    z-index: 10;
+
+    .groom_name {
+      justify-self: flex-start;
+    }
+
+    .bride_name {
+      justify-self: flex-end;
+    }
+  }
+
+  &__leaf-1 {
+    position: absolute;
+    width: 200px;
+    z-index: -1;
+    right: -6rem;
+    bottom: -5rem;
+    rotate: -5deg;
+    opacity: 0;
+    filter: saturate(1.5);
+  }
+
+  &__leaf-2 {
+    position: absolute;
+    width: 250px;
+    z-index: -1;
+    left: -7rem;
+    bottom: -7rem;
+    rotate: 45deg;
+    opacity: 0;
+    filter: saturate(1.5);
+  }
+
+  &__leaf-3 {
+    position: absolute;
+    width: 110px;
+    z-index: 1;
+    left: -4rem;
+    top: -3rem;
+    rotate: 35deg;
+    opacity: 0;
+  }
+
+  &__leaf-4 {
+    position: absolute;
+    width: 100px;
+    z-index: 1;
+    right: -4rem;
+    bottom: 8rem;
+    rotate: -35deg;
+    opacity: 0;
+  }
+}
+
+.line {
+  height: 1px;
+  width: 150px;
+  background-color: black;
+  margin: 30px auto;
+  opacity: 0;
+}
+
+// =========== Info =============
+.info {
+  opacity: 0;
+}
+
+.leaf01 {
+  position: absolute;
+  width: 120px;
+  bottom: -4rem;
+  left: -5rem;
+  rotate: 15deg;
+  z-index: -1;
+}
+
+// ============ programm ===========
+.timeline_leaf-1 {
+  position: absolute;
+  width: 200px;
+  right: -5rem;
+  top: 2rem;
+}
+
+// ============== dresscode ==============
+.leaf02 {
+  position: absolute;
+  width: 200px;
+  z-index: -1;
+  right: -7rem;
+  bottom: -8rem;
+  rotate: -15deg;
+}
+
+// =============== hashtag =================
+.leaf03 {
+  position: absolute;
+  width: 200px;
+  left: -9rem;
+  z-index: -1;
+  bottom: -4rem;
+  rotate: 20deg;
+}
+
+// =============== form ==============
+.leaf07 {
+  position: absolute;
+  width: 250px;
+  right: -8rem;
+  bottom: -7rem;
+  z-index: -1;
+}
+
+// =============== timer ===============
+.timer .leaf04 {
+  position: absolute;
+  width: 150px;
+  rotate: 82deg;
+  right: -5rem;
+  top: 4rem;
+  transform: scale(-1);
+  z-index: -1;
+}
+
+// ============== contacts ==============
+.leaf05 {
+  position: absolute;
+  width: 150px;
+  right: -4rem;
+  top: 0;
+  opacity: 0;
+  z-index: -1;
+}
+
+.leaf06 {
+  position: absolute;
+  width: 180px;
+  top: 4rem;
+  left: -2rem;
+  rotate: 25deg;
+  opacity: 0;
+  z-index: -1;
+}
+
+@media screen and (min-width: 700px) {
+  .wrapper {
+    background-color: white;
+    overflow: hidden;
+    z-index: -2;
+    padding: 0 20px;
+
+    img {
+      z-index: auto;
+    }
+  }
+
+  main {
+    background-color: #fbfff7;
+  }
+}

@@ -1,0 +1,178 @@
+.create {
+  padding-top: 60px;
+
+  .create-title {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .form {
+    width: 90%;
+    margin: 0 auto;
+
+    .q-group {
+      margin-top: 20px;
+
+      label {
+        display: block;
+        margin: 5px 0;
+
+        span {
+          color: #c12324;
+        }
+      }
+
+      input {
+        border: 1px solid #242424;
+        width: 80%;
+        padding: 5px 20px;
+      }
+    }
+
+    .programm-title,
+    .rsvp-title,
+    .dop-title,
+    .op-title,
+    .necessary-title {
+      margin-top: 50px;
+      margin-bottom: 10px;
+      font-weight: 600;
+
+      span {
+        color: #c12324;
+      }
+    }
+
+    .programm-inputs {
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+      margin-bottom: 10px;
+
+      label {
+        display: block;
+        margin: 5px 0;
+      }
+
+      input {
+        border: 1px solid #242424;
+        width: 80%;
+        padding: 5px 20px;
+      }
+    }
+
+    .rsvp-group {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+      row-gap: 10px;
+    }
+
+    .contacts-url {
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 5px 20px;
+      letter-spacing: 1px;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      background-color: #c5dcff;
+    }
+
+    .add-group {
+      margin-top: 5px;
+
+      label {
+        display: block;
+        margin: 5px 0;
+      }
+
+      input {
+        border: 1px solid #242424;
+        width: 80%;
+        padding: 5px 20px;
+      }
+    }
+
+    .c-group {
+      margin-top: 10px;
+    }
+  }
+}
+
+.checkbox:checked + img {
+  border: 1px solid #4d5974;
+  background-color: #c5dcff;
+}
+
+.check-label {
+  cursor: pointer;
+  border: 1px solid #84b5ff;
+}
+
+.checkbox {
+  display: none;
+}
+
+.programm-icon {
+  height: 150px;
+  width: 150px;
+  min-width: 150px;
+  object-fit: contain;
+}
+
+.icons {
+  display: none;
+}
+
+.tab-contents {
+  display: flex;
+}
+
+.show {
+  width: 100%;
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  overflow-y: hidden;
+}
+
+@media screen and (max-width: 600px) {
+  .create .create-title {
+    font-size: 16px;
+  }
+
+  .create {
+    .form {
+      font-size: 14px;
+
+      .programm-title,
+      .rsvp-title,
+      .dop-title,
+      .op-title,
+      .necessary-title {
+        margin-top: 30px;
+      }
+
+      .programm-inputs {
+        input {
+          width: 100%;
+        }
+      }
+
+      .q-group {
+        input {
+          width: 100%;
+        }
+      }
+
+      .add-group {
+        input {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

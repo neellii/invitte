@@ -1,0 +1,181 @@
+@mixin responsive($property, $minValue, $maxValue) {
+  #{$property}: calc(
+    (#{$minValue + px}) + ($maxValue - $minValue) *
+      ((100vw - 300px) / (1200 - 300))
+  );
+}
+
+.programm {
+  margin-top: 40px;
+
+  &_title {
+    margin-bottom: 20px;
+  }
+}
+
+.timeline-container {
+  position: relative;
+}
+
+.timeline-part {
+  position: relative;
+  min-height: 150px;
+}
+
+.timeline-line {
+  position: absolute;
+  z-index: 2;
+  left: calc(50%);
+  width: 1px;
+  top: 0px;
+  bottom: 0px;
+  display: none;
+  background-color: $detailsColor;
+
+  &::before,
+  &::after {
+    position: absolute;
+    display: block;
+    content: " ";
+    height: 7px;
+    width: 7px;
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: $detailsColor;
+  }
+
+  &::after {
+    bottom: 0px;
+  }
+}
+
+.line-section {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  align-items: center;
+  min-height: 100px;
+  flex-direction: row;
+  color: black;
+}
+.line-section:nth-child(odd) {
+  flex-direction: row-reverse;
+}
+
+.timeline-content {
+  font-family: $main-font;
+  font-size: 1rem;
+  width: calc(50%);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.timeline-icon {
+  display: block;
+  max-width: 150px;
+  max-height: 150px;
+  width: auto;
+  height: auto;
+}
+
+.timeline-number {
+  font-size: 1.2rem;
+}
+
+.dresscode {
+  margin-top: 80px;
+  position: relative;
+
+  &_colors {
+    height: 20px;
+    width: 100%;
+  }
+}
+
+.hashtag {
+  margin-top: 80px;
+  position: relative;
+
+  &_span {
+    font-family: $accent-font;
+    font-size: 35px;
+    display: block;
+    color: $detailsColor;
+  }
+}
+
+.form {
+  margin-top: 80px;
+  position: relative;
+  z-index: 10;
+
+  label {
+    display: block;
+    font-family: $main-font;
+    margin-top: 15px;
+  }
+
+  input {
+    font-family: $main-font;
+    width: 100%;
+    padding: 5px 0 5px 10px;
+    border: 1px solid $detailsColor;
+  }
+
+  button {
+    padding: 5px 20px;
+    border: 1px solid $detailsColor;
+    font-family: $main-font;
+    margin-top: 20px;
+  }
+}
+
+.timer {
+  margin-top: 80px;
+  position: relative;
+
+  .count-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 30px;
+    margin-bottom: 25px;
+    color: black;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 700px;
+  }
+
+  .big-text {
+    font-size: 1.5rem;
+    width: initial;
+  }
+
+  .count-el span {
+    font-size: 1rem;
+    font-family: $main-font;
+  }
+}
+
+.contacts {
+  a {
+    display: block;
+    padding: 5px;
+    border: 1px solid $detailsColor;
+    color: black;
+  }
+}
+
+.ps {
+  margin-top: 80px;
+  position: relative;
+  margin-bottom: 100px;
+}
+
+.info {
+  width: 100%;
+  position: relative;
+}
