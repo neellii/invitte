@@ -37,6 +37,11 @@ function previewAnimation() {
     .from(".groom_name", { transform: "scale(0.95)", x: -15 }, "<")
     .from(".wed-names .and", { transform: "scale(0.95)" }, "<")
     .from(".bride_name", { transform: "scale(0.95)", x: 15 }, "<")
+    .to(
+      ".heart",
+      { opacity: 1, clipPath: "circle(100% at 80% 20%)", duration: 1 },
+      "<"
+    )
     .from(
       ".bottomw",
       {
@@ -79,9 +84,11 @@ psTl
     ".ps .end-line",
     {
       clipPath: "inset(0 50% 0 50%)",
-      opacity: 1,
       duration: 5,
+      opacity: 1,
     },
     "<"
   )
-  .from(".ps h2", { transform: "scale(0.95)" }, "<");
+  .from(".ps h2", { transform: "scale(0.95)" }, "<")
+  .from(".heart01", { y: -20 }, "<")
+  .from(".heart02", { y: -15 }, "<");

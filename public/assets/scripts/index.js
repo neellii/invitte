@@ -57,6 +57,44 @@ likeBtns.forEach((likeBtn) => {
   });
 });
 
+// ============= like notice ==============
+if (document.querySelectorAll(".like-notice")) {
+  document.querySelectorAll(".like-notice").forEach((like) => {
+    like.addEventListener("click", (e) => {
+      let noticeDiv = e.target.nextElementSibling || e.target.nextSibling;
+      let likeTl = gsap.timeline();
+      likeTl
+        .to(noticeDiv, {
+          autoAlpha: 1,
+          duration: 0.7,
+        })
+        .to(noticeDiv, {
+          autoAlpha: 0,
+          duration: 1,
+          delay: 2,
+        });
+      likeTl.play();
+    });
+  });
+}
+
+// ============ load more ajax ============
+document.querySelector(".load-more").addEventListener("click", (e) => {
+  e.preventDefault();
+  try {
+    fetch(e.target.getAttribute("data-load"), {
+      method: "post",
+      body: e.target.getAttribute("data-number"),
+    })
+      .then((res) => res.text())
+      .then(function (data) {
+        console.log(data);
+      });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 //============= gsap animations ===============
 window.addEventListener("load", () => {
   mainTrigger();

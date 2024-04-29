@@ -1,20 +1,14 @@
 <?php require_once VIEWS . '/incs/invitations/header_inv.tpl.php' ?>
 
  <main>
+  <img class="background" src="../public/invitations/img/template-6/background.png" alt="back">
   <div class="wrapper">
   <div class="preview">
-    <img class="heart" src="../public/invitations/img/template-3/heart.png" alt="">
-    <div class="inner">
-      <div class="topw"></div>
-      <div class="toph"></div>
-      <img class="couple_img" src="<?php echo isset($inv_data['couple_img']) ? '../public' . $inv_data['couple_img'] : '../public/invitations/img/transparent.png' ?>" alt="newlyweds">
-      <div class="wed-names">
-        <h1 class="groom_name"><?= $inv_data['groom_name'] ?></h1>
-        <h1 class="and">и</h1>
-        <h1 class="bride_name"><?= $inv_data['bride_name']?></h1>
-      </div>
-      <div class="bottomw"></div>
-      <div class="bottomh"></div>
+    <img class="couple_img" src="<?php echo isset($inv_data['couple_img']) ? '../public' . $inv_data['couple_img'] : '../public/invitations/img/transparent.png' ?>" alt="newlyweds">
+    <div class="wed-names">
+      <h1 class="groom_name"><?= $inv_data['groom_name'] ?></h1>
+      <h1 class="and">&</h1>
+      <h1 class="bride_name"><?= $inv_data['bride_name'] ?></h1>
     </div>
   </div>
 
@@ -144,10 +138,8 @@
   </section>
   <?php endif; ?>
 
-  
   <?php if(array_key_exists('note', $inv_data)): ?>
-    <section class="note">
-    <div class="note-line"></div>
+  <section class="note">
     <p><?= $inv_data['note'] ?></p>
   </section>
   <?php endif; ?>
@@ -160,10 +152,7 @@
   <?php endif; ?>
 
   <section class="ps">
-    <div class="end-line"></div>
     <h2>С уважением, <?= $inv_data['groom_name'] ?> и <?= $inv_data['bride_name'] ?></h2>
-    <img class="heart01" src="../public/invitations/img/template-3/heart.png" alt="">
-    <img class="heart02" src="../public/invitations/img/template-3/heart.png" alt="">
   </section>
 
   </div>

@@ -7,6 +7,7 @@
 <?php else: ?>
 <script src="<?= "../public/invitations/scripts/script-{$data['template_id']}.js" ?>"></script>
 <?php endif; ?>
+<script src="../public/invitations/scripts/rsvp.js"></script>
 <script src="../public/invitations/scripts/animations.js"></script>
 </body>
 </html>

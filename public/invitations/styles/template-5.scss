@@ -1,7 +1,7 @@
 // ============ main =============
 @font-face {
-  font-family: "Gloria";
-  src: url("../fonts/Gloriascript.woff2") format("woff2");
+  font-family: "Dance";
+  src: url("../fonts/dance-Regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -11,15 +11,15 @@
   font-display: swap;
 }
 
-$accent-font: "Gloria";
+$accent-font: "Dance";
 $main-font: "Evolventa";
-$detailsColor: #705ca1;
+$detailsColor: #dbb991;
 
 main {
   width: 100%;
   overflow: hidden;
   font-family: $main-font;
-  background-color: #e3e2e0;
+  background-color: #1c1c1c;
   position: relative;
   z-index: 0;
 }
@@ -35,19 +35,20 @@ section {
 }
 
 h1 {
-  font-family: "Gloria";
-  font-size: 60px;
+  font-family: "Dance";
+  font-size: 45px;
+  line-height: 70px;
   color: $detailsColor;
 }
 
 h2,
 h3 {
-  font-family: "Gloria";
-  font-size: 50px;
-  line-height: 50px;
+  font-family: "Dance";
+  font-size: 30px;
+  line-height: 35px;
   margin-bottom: 20px;
   text-align: center;
-  color: #4e3885;
+  color: #dbb991;
 }
 
 p,
@@ -68,21 +69,20 @@ a {
   left: 0;
   width: 100vw;
   height: 100svh;
-  opacity: 0.93;
 }
 
 .preview {
   height: 100svh;
   position: relative;
   padding-top: 20px;
+  opacity: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  opacity: 0;
 
   .couple_img {
     max-width: 95%;
-    max-height: 60%;
+    max-height: 70%;
     width: auto;
     height: auto;
     object-fit: contain;
@@ -112,21 +112,21 @@ a {
     }
   }
 
-  &__star1 {
+  &__leaf1 {
     position: absolute;
-    bottom: 0;
-    width: 200px;
-    left: -3rem;
-    transform: scaleX(-1);
+    bottom: -1rem;
+    width: 230px;
+    left: -5rem;
     z-index: -1;
   }
 
-  &__star2 {
+  &__leaf2 {
     position: absolute;
-    bottom: 0;
-    width: 150px;
-    right: -3rem;
-    z-index: -1;
+    top: 0rem;
+    transform: scaleY(-1) rotate(24deg);
+    width: 140px;
+    right: -5rem;
+    z-index: 1;
   }
 }
 
@@ -135,7 +135,7 @@ a {
   opacity: 0;
 }
 
-.stars01 {
+.leaf01 {
   position: absolute;
   left: -7rem;
   width: 140px;
@@ -143,28 +143,28 @@ a {
   transform: scaleX(-1) rotate(60deg);
 }
 
-.stars02 {
+.leaf02 {
   position: absolute;
   width: 180px;
   right: -4.5rem;
   transform: rotate("322deg") rotateX("312deg");
   top: 4rem;
 }
-.stars03 {
+.leaf03 {
   position: absolute;
-  width: 130px;
-  left: -2rem;
-  bottom: -4rem;
-  transform: scaleX(-1) rotate(188deg);
+  width: 180px;
+  left: -4rem;
+  bottom: -6rem;
+  transform: scaleX(-1) rotate(270deg);
   z-index: -1;
 }
 
 .hashtag_span {
-  color: #4e3885;
-  font-size: 50px;
+  color: #dbb991;
+  font-size: 31px;
 }
 
-.stars04 {
+.leaf04 {
   position: absolute;
   width: 180px;
   z-index: -1;
@@ -172,35 +172,37 @@ a {
   bottom: -8rem;
 }
 
-.stars05 {
+.leaf05 {
   position: absolute;
-  width: 200px;
+  width: 150px;
   z-index: -5;
-  right: -8rem;
-  bottom: -5rem;
-  transform: rotate(117deg);
+  right: -5rem;
+  bottom: -2rem;
+  transform: rotate(117deg) scaleX(1.5);
 }
 
-.stars06 {
+.leaf06 {
   position: absolute;
   width: 180px;
   z-index: -11;
-  left: -10rem;
+  top: 1rem;
+  left: -5rem;
+  transform: scaleX(1.4);
 }
 
-.stars07 {
+.leaf07 {
   position: absolute;
   bottom: -7rem;
-  right: -3rem;
-  width: 190px;
+  right: -4rem;
+  width: 200px;
   z-index: -1;
 }
 
-.stars08 {
+.leaf08 {
   position: absolute;
   width: 220px;
-  bottom: -8rem;
-  left: -5rem;
+  bottom: -10rem;
+  left: -4rem;
   transform: scaleX(-1);
   z-index: -1;
 }
@@ -214,7 +216,7 @@ a {
   }
 
   main {
-    background-color: rgb(255, 248, 253);
+    background-color: #1c1c1c;
     position: relative;
     z-index: 0;
   }

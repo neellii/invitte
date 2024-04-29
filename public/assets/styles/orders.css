@@ -48,14 +48,6 @@
 }
 
 @media screen and (max-width: 500px) {
-  .table thead tr th:nth-child(2) {
-    display: none;
-  }
-
-  .table tbody tr td:nth-child(2) {
-    display: none;
-  }
-
   .table th,
   .table td {
     padding: 2px;

@@ -15,6 +15,7 @@
             </div>
             <div class="bottomw"></div>
             <div class="bottomh"></div>
+            <canvas id="img1"></canvas>
         </div>
       </div>
 
@@ -28,6 +29,7 @@
     <script>
 
       window.addEventListener("DOMContentLoaded", () => {
+        rotateImg("img1", "../public/invitations/img/template-3/heart.png", -8);
         setTimeout(() => {
           doCapture();
         }, 10000);

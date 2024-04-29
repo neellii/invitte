@@ -77,7 +77,7 @@
   <?php if(isset($inv_data['full_name']) || isset($inv_data['attending']) || isset($inv_data['guests_number']) || isset($inv_data['allergy_info']) || isset($inv_data['guest_note']) || isset($inv_data['rsvp_ques'])): ?>
   <section class="form">
     <p>Пожалуйста, ответьте на несколько вопросов, чтобы сделать ваше пребывание на нашем торжестве приятным и запоминающимся</p>
-    <form action="#" method="post">
+    <form action="send-rsvp" method="post" class="rsvp-form">
       <?php if(array_key_exists('full_name', $inv_data)): ?>
       <label for="full_name">Введите ваше Имя и Фамилию</label>
       <input type="text" id="full_name" name="full_name">
@@ -110,11 +110,14 @@
       <?php endforeach; ?>
       <?php endif; ?>
 
+      <input type="hidden" name="slug" value="<?= $slug ?>">
       <button type="submit">Отправить</button>
     </form>
     <img class="leaf07" src="../public/invitations/img/template-1/leaf-01.png" alt="art">
   </section>
   <?php endif; ?>
+
+  <?php require_once 'rsvp.tpl.php' ?>
 
   <?php if(array_key_exists('date_timer', $inv_data)): ?>
   <section class="section timer">

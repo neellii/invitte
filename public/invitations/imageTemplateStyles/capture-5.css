@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "Gloria";
-  src: url("../fonts/Gloriascript.woff2") format("woff2");
+  font-family: "Dance";
+  src: url("../fonts/dance-Regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -11,9 +11,9 @@
 
 h1,
 h2 {
-  font-family: "Gloria";
+  font-family: "Dance";
   text-align: center;
-  color: #4e3885;
+  color: #dbb991;
 }
 
 p {
@@ -26,7 +26,7 @@ p {
 .preview h1,
 .preview h2 {
   font-size: 120px;
-  line-height: 90px;
+  line-height: 120px;
 }
 
 .preview,
@@ -38,10 +38,12 @@ p {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  row-gap: 20px;
   overflow: hidden;
-  background: url("../img/template-4/background.png");
+  background: url("../img/template-5/background.png");
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: #1c1c1c;
 }
 .info {
   padding: 70px;
@@ -49,7 +51,7 @@ p {
 
 .info h2 {
   font-size: 85px;
-  color: #2f244a;
+  color: #dbb991;
 }
 
 .image_wr {
@@ -90,15 +92,16 @@ p {
 
 #img1 {
   width: 650px;
-  z-index: -1;
-  right: -10rem;
-  bottom: -8rem;
+  z-index: 1;
+  right: -16rem;
+  top: -8rem;
+  transform: scaleY(-1);
 }
 
 #img2 {
-  width: 500px;
-  z-index: -1;
-  left: -12rem;
+  width: 700px;
+  z-index: 1;
+  left: -11rem;
   bottom: -6rem;
 }
 

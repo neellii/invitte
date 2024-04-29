@@ -1,8 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+SC&display=swap");
-
 @font-face {
   font-family: "Alana";
-  src: url("../fonts/AlanaPro.otf") format("woff2");
+  src: url("../fonts/Storytella.woff2") format("woff2");
 }
 
 @font-face {
@@ -14,12 +12,12 @@ h1,
 h2 {
   font-family: "Alana";
   text-align: center;
-  color: #b69e83;
+  color: #3d3b3a;
   line-height: 100px;
 }
 
 p {
-  font-family: "Cormorant SC";
+  font-family: "Evolventa";
   text-align: center;
   font-size: 40px;
   margin: 20px 0;
@@ -27,7 +25,9 @@ p {
 
 .preview h1,
 .preview h2 {
-  font-size: 90px;
+  font-size: 93px;
+  transform: rotate(-3deg);
+  line-height: 80px;
 }
 
 .info {
@@ -46,7 +46,7 @@ p {
   width: 1240px;
   position: relative;
   padding-top: 50px;
-  background-color: #f1eadbe0;
+  background-color: #f9f5f2;
 
   .inner {
     height: 90%;
@@ -57,20 +57,14 @@ p {
     flex-direction: column;
     margin: 0 auto;
     padding: 20px;
-    background-color: #e7d4ba4d;
     position: relative;
   }
 
   .topw {
     position: absolute;
-    height: 10px;
+    height: 3px;
     width: 41%;
-    background: linear-gradient(
-      219deg,
-      rgba(245, 223, 193, 1) 0%,
-      rgba(255, 242, 227, 1) 25%,
-      rgba(231, 212, 186, 1) 100%
-    );
+    background: #2b2b2b;
     top: 0;
     left: 0;
   }
@@ -78,13 +72,8 @@ p {
   .toph {
     position: absolute;
     height: 36%;
-    width: 10px;
-    background: linear-gradient(
-      41deg,
-      rgba(245, 223, 193, 1) 0%,
-      rgba(255, 242, 227, 1) 32%,
-      rgba(231, 212, 186, 1) 100%
-    );
+    width: 3px;
+    background: #2b2b2b;
     top: 0;
     left: 0;
   }
@@ -92,13 +81,8 @@ p {
   .bottomh {
     position: absolute;
     height: 34%;
-    width: 10.5px;
-    background: linear-gradient(
-      100deg,
-      rgba(245, 223, 193, 1) 0%,
-      rgba(255, 242, 227, 1) 20%,
-      rgba(231, 212, 186, 1) 100%
-    );
+    width: 3px;
+    background: #2b2b2b;
     bottom: 0;
     right: 0;
   }
@@ -106,13 +90,8 @@ p {
   .bottomw {
     position: absolute;
     width: 38%;
-    height: 10.5px;
-    background: linear-gradient(
-      90deg,
-      rgba(245, 223, 193, 1) 0%,
-      rgba(255, 242, 227, 1) 33%,
-      rgba(231, 212, 186, 1) 100%
-    );
+    height: 3px;
+    background: #2b2b2b;
     bottom: 0;
     right: 0;
   }
@@ -175,4 +154,12 @@ p {
 
 .ending {
   margin-top: auto;
+}
+
+#img1 {
+  position: absolute;
+  width: 230px;
+  z-index: 1;
+  bottom: -2rem;
+  left: 2rem;
 }

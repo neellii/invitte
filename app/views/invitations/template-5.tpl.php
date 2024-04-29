@@ -1,21 +1,17 @@
 <?php require_once VIEWS . '/incs/invitations/header_inv.tpl.php' ?>
 
  <main>
+  <img class="background" src="../public/invitations/img/template-5/background.png" alt="back">
   <div class="wrapper">
   <div class="preview">
-    <img class="heart" src="../public/invitations/img/template-3/heart.png" alt="">
-    <div class="inner">
-      <div class="topw"></div>
-      <div class="toph"></div>
-      <img class="couple_img" src="<?php echo isset($inv_data['couple_img']) ? '../public' . $inv_data['couple_img'] : '../public/invitations/img/transparent.png' ?>" alt="newlyweds">
-      <div class="wed-names">
-        <h1 class="groom_name"><?= $inv_data['groom_name'] ?></h1>
-        <h1 class="and">и</h1>
-        <h1 class="bride_name"><?= $inv_data['bride_name']?></h1>
-      </div>
-      <div class="bottomw"></div>
-      <div class="bottomh"></div>
+    <img style="transform: scaleX(-1);" class="preview__leaf1" src="../public/invitations/img/template-5/leaf.png" alt="art">
+    <img class="couple_img" src="<?php echo isset($inv_data['couple_img']) ? '../public' . $inv_data['couple_img'] : '../public/invitations/img/transparent.png' ?>" alt="newlyweds">
+    <div class="wed-names">
+      <h1 class="groom_name"><?= $inv_data['groom_name'] ?></h1>
+      <h1 class="and">и</h1>
+      <h1 class="bride_name"><?= $inv_data['bride_name'] ?></h1>
     </div>
+    <img class="preview__leaf2" src="../public/invitations/img/template-5/leaf.png" alt="art">
   </div>
 
   <div class="info">
@@ -27,11 +23,13 @@
     <h2 class="info_date"><?= $inv_data['party_date'] ?></h2>
     <p class="info_add">по адресу</p>
     <h2 class="info_place"><?= $inv_data['place'] ?></h2>
+    <img class="leaf01" src="../public/invitations/img/template-5/leaf.png" alt="art">
   </div>
 
   <?php if(array_key_exists('programm_name', $inv_data)): ?>
   <section class="section programm">
     <div class="timeline-container">
+      <img class="leaf02" src="../public/invitations/img/template-5/leaf.png" alt="art">
       <h2 class="programm_title">Программа</h2>
       <div class="timeline-part">
         <div class="timeline-line"></div>
@@ -54,6 +52,7 @@
 
   <?php if(array_key_exists('hex_color', $inv_data)): ?>
   <section class="dresscode">
+    <img class="leaf03" src="../public/invitations/img/template-5/leaf.png" alt="art">
     <h2>Дресс-код</h2>
     <p>Нам будет приятно если вы поддержите цветовую гамму нашей свадьбы в своих нарядах</p>
     <?php foreach($inv_data['hex_color'] as $key => $value): ?>
@@ -67,6 +66,7 @@
     <h2>Хэштэг</h2>
     <p>Мы хотели бы запечатлеть каждый момент этого особенного дня, и мы будем рады, если вы поделитесь своими фотографиями и впечатлениями с помощью нашего официального хэштега:
     <span class="hashtag_span"><?= $inv_data['hashtag'] ?></span> Не забудьте использовать его при публикации ваших фотографий в социальных сетях.</p>
+    <img class="leaf04" src="../public/invitations/img/template-5/leaf.png" alt="art">
   </section>
   <?php endif; ?>
 
@@ -109,6 +109,7 @@
       <input type="hidden" name="slug" value="<?= $slug ?>">
       <button type="submit">Отправить</button>
     </form>
+    <img class="leaf05" src="../public/invitations/img/template-5/leaf.png" alt="art">
   </section>
   <?php endif; ?>
 
@@ -141,13 +142,14 @@
         </div>
       </div>
     </div>
+    <img class="leaf06" src="../public/invitations/img/template-5/leaf.png" alt="art">
   </section>
   <?php endif; ?>
 
-  
+  <div class="line"></div>
+
   <?php if(array_key_exists('note', $inv_data)): ?>
-    <section class="note">
-    <div class="note-line"></div>
+  <section class="note">
     <p><?= $inv_data['note'] ?></p>
   </section>
   <?php endif; ?>
@@ -160,10 +162,9 @@
   <?php endif; ?>
 
   <section class="ps">
-    <div class="end-line"></div>
     <h2>С уважением, <?= $inv_data['groom_name'] ?> и <?= $inv_data['bride_name'] ?></h2>
-    <img class="heart01" src="../public/invitations/img/template-3/heart.png" alt="">
-    <img class="heart02" src="../public/invitations/img/template-3/heart.png" alt="">
+    <img class="leaf07" src="../public/invitations/img/template-5/leaf.png" alt="art">
+    <img style="transform: scaleX(-1);" class="leaf08" src="../public/invitations/img/template-5/leaf.png" alt="art">
   </section>
 
   </div>
