@@ -12,4 +12,5 @@ public/invitations/icons_set1/
 config/db.php
 config/yoo.php
 config/rsvpSMTP.php
+config/admin.php
 public/invitations/styles/prepros.config

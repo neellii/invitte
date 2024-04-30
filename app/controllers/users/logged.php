@@ -1,6 +1,7 @@
 <?php
 
 use myfrm\Validator;
+require_once CONFIG  . '/admin.php';
 
 $data = load(['email', 'password']);
 $validator = new Validator();
@@ -25,8 +26,15 @@ if(!$validation->hasErrors()) {
     redirect();
   }
 
+  session_regenerate_id();
+
   foreach($user as $key=>$value) {
-    if($key != 'password') {
+    if($user['id'] == ADMIN) {
+      $_SESSION['user']['admin'] = ADMIN;
+      if($key != 'password') {
+        $_SESSION['user'][$key] = $value;
+      }
+    } elseif($key != 'password' || $key != 'email') {
       $_SESSION['user'][$key] = $value;
     }
   }

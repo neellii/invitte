@@ -168,13 +168,11 @@
               <input type="hidden" name="id" value="<?= $post['id'] ?>">
               <button class="buy-btn" type="submit">приобрести</button>
             </form>
-            <!-- <a href="templates/create/">приобрести</a> -->
           </div>
         </div>
       <?php endforeach; ?>
-
-      <button data-number='6' data-load=<?= $loadTemplates ?> class="load-more">загрузить еще</button>
     </div>
+    <button data-number='6' data-load=<?= $loadTemplates ?> class="load-more">загрузить еще</button>
   </section>
 
   <section class="faq" id="faq">

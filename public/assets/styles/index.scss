@@ -238,15 +238,17 @@ h2 {
     .card-text {
       padding-top: 10px;
     }
+  }
 
-    .load-more {
-      color: #000;
-      border: 1px solid #242424;
-      padding: 5px 12.5px;
-      cursor: pointer;
-      letter-spacing: 1.1px;
-      text-align: center;
-    }
+  .load-more {
+    color: #000;
+    border: 1px solid #242424;
+    padding: 5px 12.5px;
+    cursor: pointer;
+    letter-spacing: 1.1px;
+    text-align: center;
+    margin: 20px auto;
+    display: block;
   }
 }
 
@@ -426,10 +428,6 @@ h2 {
 
   .content h4 {
     font-size: 14px;
-  }
-
-  .faq .container {
-    width: 19rem;
   }
 }
 

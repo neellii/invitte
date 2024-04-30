@@ -1,61 +1,74 @@
 // ============= ajax like feature =============
-const likeBtns = document.querySelectorAll(".heart-svg");
-const heartPath = document.querySelectorAll(".heart-svg path");
-likeBtns.forEach((likeBtn) => {
-  likeBtn.addEventListener("click", (like) => {
-    if (!like.target.querySelector("path").classList.contains("red-svg")) {
-      gsap.fromTo(
-        like.target.querySelector("path"),
-        {
-          y: 5,
-        },
-        {
-          y: 0,
-          ease: "back.out(2.5)",
-          yoyo: true,
-        }
-      );
+var likeBtns = document.querySelectorAll(".heart-svg");
 
-      like.target.querySelector("path").classList.add("red-svg");
-
-      const tempId = like.target.dataset.template;
-      const xhr = new XMLHttpRequest();
-      xhr.open("POST", "liked");
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          console.log(xhr.responseText);
-        }
-      };
-      xhr.setRequestHeader("Content-type", "application/json"); // or "text/plain"
-      xhr.send(JSON.stringify(tempId));
-    } else {
-      gsap.fromTo(
-        like.target.querySelector("path"),
-        {
-          y: 5,
-        },
-        {
-          y: 0,
-          ease: "back.out(2.5)",
-          yoyo: true,
-        }
-      );
-
-      like.target.querySelector("path").classList.remove("red-svg");
-
-      const tempId = like.target.dataset.template + "unlike";
-      const xhr = new XMLHttpRequest();
-      xhr.open("POST", "liked");
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          console.log(xhr.responseText);
-        }
-      };
-      xhr.setRequestHeader("Content-type", "application/json"); // or "text/plain"
-      xhr.send(JSON.stringify(tempId));
-    }
-  });
+const getHearts = function () {
+  likeBtns = document.querySelectorAll(".heart-svg");
+  addHeartsL(likeBtns);
+};
+const heartsObserver = new MutationObserver(getHearts);
+heartsObserver.observe(document.querySelector(".temp-wrapper"), {
+  childList: true,
 });
+
+function addHeartsL(likeBtns) {
+  likeBtns.forEach((likeBtn) => {
+    likeBtn.addEventListener("click", (like) => {
+      if (!like.target.querySelector("path").classList.contains("red-svg")) {
+        gsap.fromTo(
+          like.target.querySelector("path"),
+          {
+            y: 5,
+          },
+          {
+            y: 0,
+            ease: "back.out(2.5)",
+            yoyo: true,
+          }
+        );
+
+        like.target.querySelector("path").classList.add("red-svg");
+
+        const tempId = like.target.dataset.template;
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "liked");
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.responseText);
+          }
+        };
+        xhr.setRequestHeader("Content-type", "application/json"); // or "text/plain"
+        xhr.send(JSON.stringify(tempId));
+      } else {
+        gsap.fromTo(
+          like.target.querySelector("path"),
+          {
+            y: 5,
+          },
+          {
+            y: 0,
+            ease: "back.out(2.5)",
+            yoyo: true,
+          }
+        );
+
+        like.target.querySelector("path").classList.remove("red-svg");
+
+        const tempId = like.target.dataset.template + "unlike";
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "liked");
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.responseText);
+          }
+        };
+        xhr.setRequestHeader("Content-type", "application/json"); // or "text/plain"
+        xhr.send(JSON.stringify(tempId));
+      }
+    });
+  });
+}
+
+addHeartsL(likeBtns);
 
 // ============= like notice ==============
 if (document.querySelectorAll(".like-notice")) {
@@ -88,7 +101,10 @@ document.querySelector(".load-more").addEventListener("click", (e) => {
     })
       .then((res) => res.text())
       .then(function (data) {
-        console.log(data);
+        document
+          .querySelector(".temp-wrapper")
+          .insertAdjacentHTML("beforeend", data);
+        e.target.setAttribute("data-load", 16);
       });
   } catch (err) {
     console.log(err);

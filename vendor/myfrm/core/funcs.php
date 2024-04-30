@@ -108,16 +108,6 @@ function getTemplate($template_id) {
   return require VIEWS . "/invitations/template-{$template_id}.tpl.php";
 }
 
-// function getRegexpPostArr($regexp, $gettingArr) {
-//   $arr = preg_grep($regexp, array_keys($_POST));
-//   foreach($arr as $value) {
-//     if($_POST[$value]) {
-//       array_push($gettingArr, $value);
-//     }
-//   }
-//   return $gettingArr;
-// }
-
 function deleteArrValues($array, $deleteArr) {
   foreach($deleteArr as $key => $value) {
     if(array_key_exists($value, $array)) {
