@@ -14,3 +14,6 @@ config/yoo.php
 config/rsvpSMTP.php
 config/admin.php
 public/invitations/styles/prepros.config
+public/assets/scripts/html2canvas.js
+public/assets/prepros.config
+public/uploads/
