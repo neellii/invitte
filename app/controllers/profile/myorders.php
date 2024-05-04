@@ -1,6 +1,7 @@
 <?php
 use myfrm\DateHandler;
 $db = \myfrm\App::get(\myfrm\Db::class);
+require_once CONFIG . '/admin.php';
 
 $dateHanler = new DateHandler;
 $tableData = $db->query("SELECT a.slug, a.template_id, a.created_at, a.delete_on, a.id, b.title from `event_data` a JOIN templates b ON a.template_id = b.id WHERE user_id = ?", [$_SESSION['user']['id']])->findAll();
@@ -13,5 +14,10 @@ foreach($tableData as $data => $value) {
   }
 }
 $styleFile = 'orders.css';
+
+if($_SESSION['user']['admin'] === ADMIN) {
+  $is_admin = true;
+}
+
 require_once VIEWS . '/profile/orders.tpl.php';
 

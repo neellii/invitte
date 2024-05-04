@@ -50,5 +50,10 @@
       <p style="text-align: center;">Нет приобретенных шаблонов</p>
     <?php endif; ?>
   </div>
+
+  <?php if(isset($is_admin)): ?>
+    <a href="delete" style="margin-top: 100px; border: 1px solid red; padding: 5px 10px;">Удалить устаревшие записи</a>
+  <?php endif; ?>
+
 </main>
 <?php require_once VIEWS . "/incs/footer.php" ?>

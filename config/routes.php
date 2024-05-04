@@ -19,6 +19,8 @@
   $router->post('templates/update/confirm', 'templates/update_confirm.php')->only('auth');
   $router->post('liked', 'templates/liked.php')->only('auth');
   $router->post('loadTemplates', 'templates/loadTemplates.php');
+  $router->get('delete', 'templates/delete.php');
+  $router->post('delete', 'templates/delete-data.php');
 
   $router->get('generate-img/(?P<slug>[a-zA-Z0-9-]+)', 'captures/generateImage.php')->only('auth');
   $router->get('i/(?P<slug>[a-zA-Z0-9-]+)', 'templates/showInvitation.php');

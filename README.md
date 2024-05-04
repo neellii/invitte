@@ -1,4 +1,4 @@
-## [MVC patterned website for making online invitations](https://github.com/neellii/invitte.git)
+## [MVC patterned website for making online invitations](https://cz82944.tw1.ru/)
 
 ### User Path:
 
@@ -19,4 +19,4 @@ register :arrow_right: login :arrow_right: choose invitation template :arrow_rig
 - gsap :small_blue_diamond: for animations
 - lenis :small_blue_diamond: for smooth scroll
 
-_Todo: add email verification on register page; fill out templates, more tests_
+_Todo: add email verification on register page; fill out templates, more mobile browser tests_
